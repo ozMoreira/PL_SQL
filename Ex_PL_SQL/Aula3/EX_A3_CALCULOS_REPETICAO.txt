@@ -1,0 +1,83 @@
+SET SERVEROUTPUT ON;
+
+DECLARE V_CONTADOR NUMBER(2):= 1;
+         V_RES NUMBER(2):= 0;
+         V_NUM NUMBER(2):=2;
+
+BEGIN
+LOOP
+    V_RES := V_NUM*V_CONTADOR;
+    DBMS_OUTPUT.PUT_LINE (V_RES);
+        V_CONTADOR := V_CONTADOR + 1;
+    EXIT WHEN (V_CONTADOR > 10);
+END LOOP;
+END;
+
+-------------------------------
+
+DECLARE V_CONTADOR NUMBER(2):= 1;
+         V_RES NUMBER(2):= 0;
+         V_NUM NUMBER(2):=2;
+BEGIN
+WHILE V_CONTADOR <= 10 LOOP
+    V_RES := V_NUM*V_CONTADOR;
+    DBMS_OUTPUT.PUT_LINE (V_RES);
+    V_CONTADOR := V_CONTADOR + 1;
+END LOOP;
+END;
+
+--------------------------------
+
+DECLARE 
+         V_RES NUMBER(2):= 0;
+         V_NUM NUMBER(2):=2;
+BEGIN
+FOR V_CONTADOR IN 1..10
+LOOP
+         V_RES := V_NUM*V_CONTADOR;
+        DBMS_OUTPUT.PUT_LINE (V_RES);
+END LOOP;
+END;
+
+--------------------------------
+
+
+DECLARE 
+         V_PAR NUMBER(2):= 0;
+         V_IMPAR NUMBER(2):=0;
+BEGIN
+FOR N IN 1..10
+LOOP
+        IF MOD(N, 2) = 0 THEN
+            V_PAR:= V_PAR + 1;
+        ELSE 
+            V_IMPAR := V_IMPAR + 1;
+        END IF;
+END LOOP;
+        DBMS_OUTPUT.PUT_LINE ('Qtd Nro Par: ' || V_PAR );
+        DBMS_OUTPUT.PUT_LINE ('Qtd Nro Impar: ' || V_IMPAR );
+END;
+
+--------------------------------
+
+DECLARE 
+         V_PAR NUMBER(2):= 0;
+         V_IMPAR NUMBER(2):=0;
+         V_TOTAL_PAR NUMBER(2) := 0;
+         V_TOTAL_IMPAR NUMBER(2) := 0;
+BEGIN
+FOR N IN 1..10
+LOOP
+        IF MOD(N, 2) = 0 THEN
+            V_PAR:= V_PAR + 1;
+            V_TOTAL_PAR := V_TOTAL_PAR + N;
+        ELSE 
+            V_IMPAR := V_IMPAR + 1;
+            V_TOTAL_IMPAR := V_TOTAL_IMPAR + N;
+        END IF;
+END LOOP;
+        V_TOTAL_PAR := V_TOTAL_PAR / V_PAR;
+        DBMS_OUTPUT.PUT_LINE ('Media Nro Par: ' || V_TOTAL_PAR );
+        DBMS_OUTPUT.PUT_LINE ('Qtd Nro Impar: ' || V_TOTAL_IMPAR );
+END;
+

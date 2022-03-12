@@ -1,0 +1,33 @@
+SET SERVEROUTPUT ON;
+
+------------------------------
+
+DECLARE V_CONTADOR NUMBER(2):= 1;
+
+BEGIN
+LOOP
+    DBMS_OUTPUT.PUT_LINE (V_CONTADOR);
+        V_CONTADOR := V_CONTADOR + 1;
+    EXIT WHEN (V_CONTADOR > 20);
+END LOOP;
+END;
+
+-------------------------------
+
+DECLARE V_CONTADOR NUMBER(2):= 1;
+
+BEGIN
+WHILE V_CONTADOR <= 20 LOOP
+        DBMS_OUTPUT.PUT_LINE (V_CONTADOR);
+        V_CONTADOR := V_CONTADOR + 1;
+END LOOP;
+END;
+
+--------------------------------
+
+BEGIN
+FOR V_CONTADOR IN 1..20
+LOOP
+        DBMS_OUTPUT.PUT_LINE (V_CONTADOR);
+END LOOP;
+END;
